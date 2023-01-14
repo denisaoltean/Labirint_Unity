@@ -1,0 +1,36 @@
+LABIRINT
+- generare*
+- incarcare din fisier
+- iesire din labirint (DF, BF)
+- 2D (Unity sau consola)
+- 3D (Unity)
+- 3 camera (spectator-vede toata scena, first person, follow-up )
+- acelasi back-end, clean-code, GIT
+
+
+A,nxm
+xs,ys
+
+df(x, y) {
+    if (not eLocLiber(x,y)) return
+    A[x,y] = 2 | ocupat
+    if (exit(x,y)) success
+        df(x - 1, y)
+        df(x + 1, y)
+        df(x, y - 1)
+        df(x, y + 1)
+    ?? A[x,y] = 0  | liber
+}
+
+
+Q={(xs,ys)}
+A[xs,ys] = 1 | 0
+bf(x, y) {
+    while (not isEmpty Q) {
+        P = Q.Pop();
+        pentru toti vecinii V neatinsi ai lui P(x,y)
+            Q.Push(V)
+            A[V.x,V,y] = A[P.x,P.y] + 1
+            Pred(V) = P
+    }
+}
