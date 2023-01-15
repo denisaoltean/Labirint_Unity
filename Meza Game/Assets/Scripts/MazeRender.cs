@@ -49,6 +49,27 @@ public class MazeRender : MonoBehaviour
                     leftWall.eulerAngles = new Vector3(0, 90, 0);
                 }
 
+                if (i == width - 1)
+                {
+                    if (cell.HasFlag(WallState.RIGHT))
+                    {
+                        var rightWall = Instantiate(wallPrefab, transform) as Transform;
+                        rightWall.position = position + new Vector3(+size / 2, 0, 0);
+                        rightWall.localScale = new Vector3(size, rightWall.localScale.y, rightWall.localScale.z);
+                        rightWall.eulerAngles = new Vector3(0, 90, 0);
+                    }
+                }
+
+                if (j == 0)
+                {
+                    if (cell.HasFlag(WallState.DOWN))
+                    {
+                        var bottomWall = Instantiate(wallPrefab, transform) as Transform;
+                        bottomWall.position = position + new Vector3(0, 0, -size / 2);
+                        bottomWall.localScale = new Vector3(size, bottomWall.localScale.y, bottomWall.localScale.z);
+                    }
+                }
+
             }
 
         }
